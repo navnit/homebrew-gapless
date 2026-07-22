@@ -1,9 +1,9 @@
 cask "gapless" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.1.0"
-  sha256 arm:   "2631442f3a808c6d6bf65b49ff7469e9c7d1a76e73105d9f66535f53650c4fc8",
-         intel: "ae6b7502abfc034b15e51144e8b5be3ec4a1711157d043f9c057208f07d32588"
+  version "0.1.1"
+  sha256 arm:   "fd9e8fcac5db7626aaab983f58eff2303752a1f0e1d73683f5d1ea52cf6c1e8a",
+         intel: "6aa9461a45cc03cf56a9c51c483247f9ea871815f9c0f9dc06a70b7b58e610aa"
 
   url "https://github.com/navnit/gapless/releases/download/v#{version}/Gapless-#{version}-macos-#{arch}-UNNOTARIZED.dmg"
   name "Gapless"
