@@ -1,0 +1,19 @@
+name: cask
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  audit:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew style --cask Casks/gapless.rb
+      - run: brew audit --cask --strict --online Casks/gapless.rb
+  install:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install --cask "$PWD/Casks/gapless.rb"
+      - run: test -d "/Applications/Gapless.app"
+      - run: brew uninstall --cask "$PWD/Casks/gapless.rb"
