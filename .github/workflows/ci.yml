@@ -4,16 +4,17 @@ on:
   push:
     branches: [main]
 jobs:
-  audit:
+  test:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - run: brew style --cask Casks/gapless.rb
-      - run: brew audit --cask --strict --online Casks/gapless.rb
-  install:
-    runs-on: macos-14
-    steps:
-      - uses: actions/checkout@v4
-      - run: brew install --cask "$PWD/Casks/gapless.rb"
+      - name: Link the checkout as a Homebrew tap
+        run: |
+          tap="$(brew --repository)/Library/Taps/navnit/homebrew-gapless"
+          mkdir -p "$(dirname "$tap")"
+          ln -sfn "$GITHUB_WORKSPACE" "$tap"
+      - run: brew style --cask navnit/gapless/gapless
+      - run: brew audit --cask --strict --online navnit/gapless/gapless
+      - run: brew install --cask navnit/gapless/gapless
       - run: test -d "/Applications/Gapless.app"
-      - run: brew uninstall --cask "$PWD/Casks/gapless.rb"
+      - run: brew uninstall --cask navnit/gapless/gapless
