@@ -19,10 +19,14 @@ cask "gapless" do
 
   app "Gapless.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Gapless.app"]
+  end
+
   caveats <<~EOS
-    Gapless #{version} is ad hoc signed but not notarized by Apple. On first
-    launch macOS will block it. To open it, go to
-    System Settings > Privacy & Security, scroll to Security, and click
-    "Open Anyway", then confirm. Each new version may require this again.
+    Gapless #{version} is ad hoc signed but not notarized by Apple. This cask
+    removes the download quarantine so the app opens without a Gatekeeper
+    prompt, which means it runs software Apple has not reviewed.
   EOS
 end
