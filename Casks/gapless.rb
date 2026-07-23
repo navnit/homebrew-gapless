@@ -5,13 +5,13 @@ cask "gapless" do
   sha256 arm:   "fd9e8fcac5db7626aaab983f58eff2303752a1f0e1d73683f5d1ea52cf6c1e8a",
          intel: "6aa9461a45cc03cf56a9c51c483247f9ea871815f9c0f9dc06a70b7b58e610aa"
 
-  url "https://github.com/navnit/gapless/releases/download/v#{version}/Gapless-#{version}-macos-#{arch}-UNNOTARIZED.dmg"
+  url "https://github.com/navnit/gapless-app/releases/download/v#{version}/Gapless-#{version}-macos-#{arch}-UNNOTARIZED.dmg"
   name "Gapless"
   desc "Desktop video editor"
-  homepage "https://github.com/navnit/gapless"
+  homepage "https://github.com/navnit/gapless-app"
 
   livecheck do
-    url "https://github.com/navnit/gapless/releases/latest"
+    url "https://github.com/navnit/gapless-app/releases/latest"
     strategy :github_latest
   end
 
